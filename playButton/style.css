@@ -57,9 +57,11 @@ h6 {
     display: flex;
     justify-content: center;
     align-items: center;
+    padding: 0 0 7rem 0;
 }
 
 .button {
+    font-family: inherit;
     transition: all 0.1s ease-in;
     display: flex;
     gap: 1.5rem;
@@ -71,11 +73,28 @@ h6 {
     color: #f0f0f3;
     border: none;
     align-items: center;
+    font-size: 1.8rem;
+    font-weight: 500;
+    letter-spacing: 1px;
 }
 
 .button:hover {
     background-color: #eb4d4b;
     transform: translateY(0.15rem);
+}
+
+.button:has(:checked) {
+    background-color: #eb4d4b;
+}
+
+input[type='checkbox'] {
+    /* Add if not using autoprefixer */
+    -webkit-appearance: none;
+    appearance: none;
+    /* For iOS < 15 to remove gradient background */
+    background-color: #fff;
+    /* Not removed via appearance */
+    margin: 0;
 }
 
 .button__arrow {
@@ -84,9 +103,4 @@ h6 {
     border-top: 0.8rem solid transparent;
     border-bottom: 0.8rem solid transparent;
     border-left: 1rem solid #f0f0f3;
-}
-
-.button__text {
-    font-size: 1.8rem;
-    font-weight: 500;
 }

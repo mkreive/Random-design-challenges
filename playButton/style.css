@@ -61,46 +61,67 @@ h6 {
 }
 
 .button {
+    position: relative;
     font-family: inherit;
     transition: all 0.1s ease-in;
     display: flex;
     gap: 1.5rem;
     cursor: pointer;
-    font-weight: 400;
     border-radius: 3rem;
     padding: 1.2rem 3rem;
-    background-color: #000000;
-    color: #f0f0f3;
+    background-color: #3a393b;
+    color: #fff;
     border: none;
     align-items: center;
     font-size: 1.8rem;
-    font-weight: 500;
+    font-weight: 600;
     letter-spacing: 1px;
 }
 
 .button:hover {
-    background-color: #eb4d4b;
-    transform: translateY(0.15rem);
+    background-color: #2e77f2;
 }
 
-.button:has(:checked) {
-    background-color: #eb4d4b;
+.button:has(input:checked) {
+    background-color: #2e77f2;
 }
 
-input[type='checkbox'] {
-    /* Add if not using autoprefixer */
-    -webkit-appearance: none;
-    appearance: none;
-    /* For iOS < 15 to remove gradient background */
-    background-color: #fff;
-    /* Not removed via appearance */
-    margin: 0;
+.button:active {
+    transform: translateY(0.2rem);
 }
 
-.button__arrow {
+.arrow {
+    position: relative;
+    transition: all 0.5s ease-in-out;
+    cursor: pointer;
     width: 0;
     height: 0;
     border-top: 0.8rem solid transparent;
     border-bottom: 0.8rem solid transparent;
-    border-left: 1rem solid #f0f0f3;
+    border-left: 1rem solid #fff;
+}
+
+.arrow::after {
+    transition: all 0.5s ease-in-out;
+    content: '';
+    position: absolute;
+    background-color: transparent;
+    width: 1.5rem;
+    height: 2rem;
+    top: -1rem;
+}
+
+.label {
+    cursor: pointer;
+}
+
+.visually-hidden {
+    cursor: pointer;
+    position: absolute;
+    opacity: 0;
+}
+
+.button:has(input:checked) > .arrow::after {
+    transform: translateX(-1rem);
+    background-color: #2e77f2;
 }

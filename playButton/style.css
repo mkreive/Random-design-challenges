@@ -65,7 +65,7 @@ h6 {
     font-family: inherit;
     transition: all 0.1s ease-in;
     display: flex;
-    gap: 1.5rem;
+    gap: 1.65rem;
     cursor: pointer;
     border-radius: 3rem;
     padding: 1.2rem 3rem;
@@ -75,7 +75,8 @@ h6 {
     align-items: center;
     font-size: 1.8rem;
     font-weight: 600;
-    letter-spacing: 1px;
+    min-width: 15rem;
+    justify-content: center;
 }
 
 .button:hover {
@@ -92,7 +93,7 @@ h6 {
 
 .arrow {
     position: relative;
-    transition: all 0.5s ease-in-out;
+    transition: all 0.4s ease-in-out;
     cursor: pointer;
     width: 0;
     height: 0;
@@ -102,13 +103,23 @@ h6 {
 }
 
 .arrow::after {
-    transition: all 0.5s ease-in-out;
+    transition: transform 0.4s ease-in-out;
     content: '';
     position: absolute;
     background-color: transparent;
     width: 1.5rem;
     height: 2rem;
     top: -1rem;
+}
+
+.arrow::before {
+    transition: all 0.4s ease-in-out;
+    content: '';
+    position: absolute;
+    background-color: transparent;
+    width: 1rem;
+    height: 1.6rem;
+    top: -0.8rem;
 }
 
 .label {
@@ -121,7 +132,43 @@ h6 {
     opacity: 0;
 }
 
-.button:has(input:checked) > .arrow::after {
+.button:has(input:checked) > .arrow::before {
+    transition: all 0.4s ease-in-out;
     transform: translateX(-1rem);
-    background-color: #2e77f2;
+    background: rgb(255, 255, 255);
+    background: linear-gradient(
+        90deg,
+        rgba(255, 255, 255, 1) 30%,
+        rgba(46, 119, 242, 1) 30%,
+        rgba(46, 119, 242, 1) 70%,
+        rgba(255, 255, 255, 1) 70%
+    );
+}
+
+@keyframes back {
+    0% {
+        transform: translateX(0rem);
+    }
+    20% {
+        transform: translateX(-0.8rem);
+    }
+    100% {
+        transform: translateX(0rem);
+    }
+}
+@keyframes slide {
+    0% {
+        transform: translateX(-1rem);
+    }
+    to {
+        transform: translateX(0rem);
+    }
+}
+.move {
+    animation-name: slide;
+    animation-duration: 0.3s;
+}
+.back {
+    animation-name: back;
+    animation-duration: 0.5s;
 }
